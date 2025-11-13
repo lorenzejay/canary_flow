@@ -1,0 +1,28 @@
+conduct_research:
+  description: >
+    Conduct thorough web research on the topic: {topic}.
+    Use the EXA search tool to find the most recent and relevant information.
+    Focus on finding credible sources, recent developments, key statistics,
+    and important insights about the topic.
+  expected_output: >
+    A comprehensive collection of research findings including:
+    - Key facts and statistics
+    - Recent developments and trends
+    - Important insights from credible sources
+    - Relevant URLs and references
+  agent: research_analyst
+
+write_report:
+  description: >
+    Based on the research findings, write a comprehensive research report about {topic}.
+    The report should be well-structured with clear sections, including an introduction,
+    key findings, analysis, and conclusion. Include references to sources.
+  expected_output: >
+    A professional research report (500-800 words) with the following sections:
+    - Executive Summary
+    - Introduction
+    - Key Findings
+    - Analysis and Insights
+    - Conclusion
+    - References
+  agent: report_writer

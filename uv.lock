@@ -279,10 +279,14 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "crewai", extra = ["tools"] },
+    { name = "exa-py" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "crewai", extras = ["tools"], specifier = "==1.4.1" }]
+requires-dist = [
+    { name = "crewai", extras = ["tools"], specifier = "==1.4.1" },
+    { name = "exa-py", specifier = ">=2.0.0" },
+]
 
 [[package]]
 name = "certifi"
@@ -665,6 +669,24 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d3/38/af70d7ab1ae9d4da450eeec1fa3918940a5fafb9055e934af8d6eb0c2313/et_xmlfile-2.0.0.tar.gz", hash = "sha256:dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54", size = 17234, upload-time = "2024-10-25T17:25:40.039Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa", size = 18059, upload-time = "2024-10-25T17:25:39.051Z" },
+]
+
+[[package]]
+name = "exa-py"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpcore" },
+    { name = "httpx" },
+    { name = "openai" },
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+    { name = "requests" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/44/f1/fece8eeb0f3b745f49666b31ef1e8b34851f90cc5c94abcccc083704331f/exa_py-2.0.0.tar.gz", hash = "sha256:237a632dd3813949328bd56b8cbf6e5f61753d5703ef0f23a899f0e99d545457", size = 40720, upload-time = "2025-10-28T02:29:37.708Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cc/c6/a1f11e2b3f6bbc92ae0a3bcd4f462a15485182758e9af227a878bfca1d39/exa_py-2.0.0-py3-none-any.whl", hash = "sha256:8badba4f5dfbaa3875adbcde1d607343dd93f79c2ea8d63030852952e023c76d", size = 55990, upload-time = "2025-10-28T02:29:36.358Z" },
 ]
 
 [[package]]
