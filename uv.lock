@@ -116,6 +116,18 @@ wheels = [
 ]
 
 [[package]]
+name = "aiosqlite"
+version = "0.21.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/13/7d/8bca2bf9a247c2c5dfeec1d7a5f40db6518f88d314b8bca9da29670d2671/aiosqlite-0.21.0.tar.gz", hash = "sha256:131bb8056daa3bc875608c631c678cda73922a2d4ba8aec373b19f18c17e7aa3", size = 13454, upload-time = "2025-02-03T07:30:16.235Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f5/10/6c25ed6de94c49f88a91fa5018cb4c0f3625f31d5be9f771ebe5cc7cd506/aiosqlite-0.21.0-py3-none-any.whl", hash = "sha256:2549cf4057f95f53dcba16f2b64e8e2791d7e1adedb13197dd8ed77bb226d7d0", size = 15792, upload-time = "2025-02-03T07:30:13.6Z" },
+]
+
+[[package]]
 name = "annotated-types"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -280,7 +292,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "crewai", extras = ["tools"], specifier = "==1.4.0" },
+    { name = "crewai", extras = ["tools"], specifier = "==1.7.0" },
     { name = "exa-py", specifier = ">=2.0.0" },
 ]
 
@@ -513,9 +525,10 @@ wheels = [
 
 [[package]]
 name = "crewai"
-version = "1.4.0"
+version = "1.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "aiosqlite" },
     { name = "appdirs" },
     { name = "chromadb" },
     { name = "click" },
@@ -541,9 +554,9 @@ dependencies = [
     { name = "tomli-w" },
     { name = "uv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/67/d0/872fd2c814a0c5e6651a5312b45442368a1409e4e9b72318ba4568429750/crewai-1.4.0.tar.gz", hash = "sha256:3771122f0aae8aa1e5e60f08317b28efe7c7e95898d5fbd1331b33947e282550", size = 3992683, upload-time = "2025-11-07T04:24:17.484Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/58/d8/cb5ac42f5b21248dae967d830b447e42adf0d59dea7b5777e663d16cc2ba/crewai-1.7.0.tar.gz", hash = "sha256:f43a0e94a83b6e11de008bba7fee871a7f0e3221f438b6a9b492a00efb978b20", size = 4024076, upload-time = "2025-12-09T00:43:23.885Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/45/bb/3d8db8916d0b5a8861d008e8b2b72be6603f8c1187ff789dd2984f8d5e7b/crewai-1.4.0-py3-none-any.whl", hash = "sha256:075d82d01fec4402a05f45350cf9272b5d7fb9d65ee172bd1a1d921fe7733876", size = 611380, upload-time = "2025-11-07T04:24:15.013Z" },
+    { url = "https://files.pythonhosted.org/packages/6f/de/89e5a13976c08f8b78c7a1d45d603601c6e713471d2c261ba364e6bcd316/crewai-1.7.0-py3-none-any.whl", hash = "sha256:cc09d9b3cbef436ae0f8169e2b174a1e9ce2841d3c0553f684eb5f1e88eaf0d1", size = 665249, upload-time = "2025-12-09T00:43:21.787Z" },
 ]
 
 [package.optional-dependencies]
@@ -553,23 +566,23 @@ tools = [
 
 [[package]]
 name = "crewai-tools"
-version = "1.4.0"
+version = "1.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "crewai" },
     { name = "docker" },
     { name = "lancedb" },
-    { name = "pypdf" },
+    { name = "pymupdf" },
     { name = "python-docx" },
     { name = "pytube" },
     { name = "requests" },
     { name = "tiktoken" },
     { name = "youtube-transcript-api" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/67/42/99fd16a4570bfe736fe5ef4ba389e9cd027e4a093f8b4d98ee47df667881/crewai_tools-1.4.0.tar.gz", hash = "sha256:ff3fd5eb2f6f7a90c673233cee0d0fe1bdea4124b1e5dd2b7c5a7cdfee985241", size = 792295, upload-time = "2025-11-07T04:24:21.053Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2b/f8/a803008a3f3ca8b7fcc4dac36c80e8d102baf9e4d0ceff5488e1b0e84a59/crewai_tools-1.7.0.tar.gz", hash = "sha256:697049409df301158d18a40cb2356a44dc106e512d4379fa241b5e4121f39e07", size = 805978, upload-time = "2025-12-09T00:43:27.195Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a7/da/aa12370b7d2a776ba811d91ee128486414aa1d608184db62cc0bbd7a4ff0/crewai_tools-1.4.0-py3-none-any.whl", hash = "sha256:f4fd3e288d3fcf1c3606937699a0a842dfff08b4cec47450a0e4b8856a825986", size = 755006, upload-time = "2025-11-07T04:24:19.115Z" },
+    { url = "https://files.pythonhosted.org/packages/0e/05/d9ac249b0d1168d200aa379a696b8b125daab790e01fb4892eb4980085af/crewai_tools-1.7.0-py3-none-any.whl", hash = "sha256:1238daf7a28e2825e58180e102485a9f4c16bbc9e1c3c2e0a5f876525a434713", size = 766673, upload-time = "2025-12-09T00:43:25.453Z" },
 ]
 
 [[package]]
@@ -2703,15 +2716,17 @@ wheels = [
 ]
 
 [[package]]
-name = "pypdf"
-version = "6.4.1"
+name = "pymupdf"
+version = "1.26.6"
 source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0c/e0/57f914ae9fedbc91fe3ebe74b78c88903943ec9c232b6da15947bb3bf8ab/pypdf-6.4.1.tar.gz", hash = "sha256:36eb0b52730fc3077d2b8d4122751e696d46af9ef9e5383db492df1ab0cc4647", size = 5275322, upload-time = "2025-12-07T14:19:27.922Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ec/d7/a6f0e03a117fa2ad79c4b898203bb212b17804f92558a6a339298faca7bb/pymupdf-1.26.6.tar.gz", hash = "sha256:a2b4531cd4ab36d6f1f794bb6d3c33b49bda22f36d58bb1f3e81cbc10183bd2b", size = 84322494, upload-time = "2025-11-05T15:20:46.786Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/db/ef/68c0f473d8b8764b23f199450dfa035e6f2206e67e9bde5dd695bab9bdf0/pypdf-6.4.1-py3-none-any.whl", hash = "sha256:1782ee0766f0b77defc305f1eb2bafe738a2ef6313f3f3d2ee85b4542ba7e535", size = 328325, upload-time = "2025-12-07T14:19:26.286Z" },
+    { url = "https://files.pythonhosted.org/packages/9e/5c/dec354eee5fe4966c715f33818ed4193e0e6c986cf8484de35b6c167fb8e/pymupdf-1.26.6-cp310-abi3-macosx_10_9_x86_64.whl", hash = "sha256:e46f320a136ad55e5219e8f0f4061bdf3e4c12b126d2740d5a49f73fae7ea176", size = 23178988, upload-time = "2025-11-05T14:31:19.834Z" },
+    { url = "https://files.pythonhosted.org/packages/ec/a0/11adb742d18142bd623556cd3b5d64649816decc5eafd30efc9498657e76/pymupdf-1.26.6-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:6844cd2396553c0fa06de4869d5d5ecb1260e6fc3b9d85abe8fa35f14dd9d688", size = 22469764, upload-time = "2025-11-05T14:32:34.654Z" },
+    { url = "https://files.pythonhosted.org/packages/e4/c8/377cf20e31f58d4c243bfcf2d3cb7466d5b97003b10b9f1161f11eb4a994/pymupdf-1.26.6-cp310-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:617ba69e02c44f0da1c0e039ea4a26cf630849fd570e169c71daeb8ac52a81d6", size = 23502227, upload-time = "2025-11-06T11:03:56.934Z" },
+    { url = "https://files.pythonhosted.org/packages/4f/bf/6e02e3d84b32c137c71a0a3dcdba8f2f6e9950619a3bc272245c7c06a051/pymupdf-1.26.6-cp310-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:7777d0b7124c2ebc94849536b6a1fb85d158df3b9d873935e63036559391534c", size = 24115381, upload-time = "2025-11-05T14:33:54.338Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/9d/30f7fcb3776bfedde66c06297960debe4883b1667294a1ee9426c942e94d/pymupdf-1.26.6-cp310-abi3-win32.whl", hash = "sha256:8f3ef05befc90ca6bb0f12983200a7048d5bff3e1c1edef1bb3de60b32cb5274", size = 17203613, upload-time = "2025-11-05T17:19:47.494Z" },
+    { url = "https://files.pythonhosted.org/packages/f9/e8/989f4eaa369c7166dc24f0eaa3023f13788c40ff1b96701f7047421554a8/pymupdf-1.26.6-cp310-abi3-win_amd64.whl", hash = "sha256:ce02ca96ed0d1acfd00331a4d41a34c98584d034155b06fd4ec0f051718de7ba", size = 18405680, upload-time = "2025-11-05T14:34:48.672Z" },
 ]
 
 [[package]]
