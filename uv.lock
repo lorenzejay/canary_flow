@@ -292,7 +292,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "crewai", extras = ["google-genai", "tools"], specifier = "==1.7.1" },
+    { name = "crewai", extras = ["google-genai", "tools"], specifier = "==1.8.0" },
     { name = "exa-py", specifier = ">=2.0.0" },
 ]
 
@@ -525,7 +525,7 @@ wheels = [
 
 [[package]]
 name = "crewai"
-version = "1.7.1"
+version = "1.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiosqlite" },
@@ -554,9 +554,9 @@ dependencies = [
     { name = "tomli-w" },
     { name = "uv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/84/9b/4f8e57de3cb1f5d28851ddcd6e5382ca6b533446bc1584dbc288db4dbf65/crewai-1.7.1.tar.gz", hash = "sha256:7b1b3423916aa795e23ca7bbf789d3c142276bc5da50e008d9572ff364c93505", size = 3727684, upload_time = "2025-12-16T05:53:24.239Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/45/bf/8dd5dea12e98a9c9d49081788558ed5865509cbe7944affdb8dcdf0cded1/crewai-1.8.0.tar.gz", hash = "sha256:219f50ba88031da477e9beb2782d602cc41e0e8ab1773703cd30e14ca63da8e3", size = 3776187, upload_time = "2026-01-08T00:23:10.431Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/60/4c/ec2cd05bdcd200dcde88eecfe9a23952f7719cf2348ca9146c10cbc0674b/crewai-1.7.1-py3-none-any.whl", hash = "sha256:5abc777008bd22133dcbb2d40426a573d6a5399df2bc5369c9116bdf3fcdf943", size = 666700, upload_time = "2025-12-16T05:53:22.521Z" },
+    { url = "https://files.pythonhosted.org/packages/22/a0/c170a6f2363758615766862197da0022aabb0ffa084398a1ff7aab3f965e/crewai-1.8.0-py3-none-any.whl", hash = "sha256:c24e5a3e5fe64c5da2c082cb47410d50addd2faff97927080651771f99d05642", size = 701362, upload_time = "2026-01-08T00:23:08.326Z" },
 ]
 
 [package.optional-dependencies]
@@ -569,7 +569,7 @@ tools = [
 
 [[package]]
 name = "crewai-tools"
-version = "1.7.1"
+version = "1.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -583,9 +583,9 @@ dependencies = [
     { name = "tiktoken" },
     { name = "youtube-transcript-api" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/66/87/a8b53481587159ef86b60d464a773e584cbc14b0bf46bc944cc04cf56286/crewai_tools-1.7.1.tar.gz", hash = "sha256:b5559bafec2e1d9b3268979911743d6605862b738de1d0429ac0e442165f81af", size = 805968, upload_time = "2025-12-16T05:53:27.828Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/74/8e/5a5e56ec890e4995bdcc8f65843112f588ca820835f3245f79c1f7c516ce/crewai_tools-1.8.0.tar.gz", hash = "sha256:916799df050f82d05e97e531ab2a08c29dae79e6f93b1c889de80363ff2d6047", size = 806600, upload_time = "2026-01-08T00:23:13.98Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d9/46/80d41cf2231f62484fa974514f733ed3967be3d67df5e5e56684bfcba810/crewai_tools-1.7.1-py3-none-any.whl", hash = "sha256:9bf055f246109b9f36682764b16dbfce58485a2d555212c8473b6c087ee6481e", size = 766671, upload_time = "2025-12-16T05:53:25.698Z" },
+    { url = "https://files.pythonhosted.org/packages/af/66/5bc282820eedafa99b462128839164eb534429ddadbdc67fb520f47dbe94/crewai_tools-1.8.0-py3-none-any.whl", hash = "sha256:91057bd98dff600e52a4dde0521eac0aa691b70f5138ac04777145ea1a0afe42", size = 766788, upload_time = "2026-01-08T00:23:11.915Z" },
 ]
 
 [[package]]
