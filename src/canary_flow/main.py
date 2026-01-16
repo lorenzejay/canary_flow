@@ -25,7 +25,7 @@ class ResearchFlow(Flow[ResearchState]):
             "Impact of remote work on productivity",
             "Emerging cybersecurity threats in 2024",
         ]
-        self.state.topic = choice(topics)
+        self.state.topic = "lorenze jay hernandez"
         print(f"Selected topic: {self.state.topic}")
 
     @listen(select_research_topic)
