@@ -21,7 +21,3 @@ build-backend = "hatchling.build"
 [tool.crewai]
 type = "flow"
 
-[tool.uv.sources]
-crewai = { path = "/Users/lorenzejay/workspace/crewAI/lib/crewai", editable = true }
-
-
