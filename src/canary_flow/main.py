@@ -36,6 +36,7 @@ class ResearchFlow(Flow[ResearchState]):
 
         print("Research completed")
         self.state.report = result.raw
+        self.remember(result.raw)
         return result.token_usage
 
     @listen(conduct_web_research)
