@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from pydantic import BaseModel
 
-from crewai.flow import Flow, human_feedback, listen, start
+from crewai.flow import Flow, human_feedback, listen, or_, start
 
 from canary_flow.create_vertex_config import create_llm
 from canary_flow.crews.research_crew.research_crew import ResearchCrew
@@ -12,6 +12,7 @@ _HITL_LLM = create_llm()
 class ResearchState(BaseModel):
     topic: str = ""
     report: str = ""
+    revision_feedback: str = ""
 
 
 class ResearchFlow(Flow[ResearchState]):
@@ -22,14 +23,34 @@ class ResearchFlow(Flow[ResearchState]):
         self.state.topic = "lorenze jay hernandez"
         print(f"Selected topic: {self.state.topic}")
 
-    @listen(select_research_topic)
+    @listen("revise")
+    def queue_revision_and_retry(self):
+        """Store reviewer feedback so the next research pass can address it."""
+        hf = self.last_human_feedback
+        self.state.revision_feedback = (
+            hf.feedback.strip() if hf and hf.feedback.strip() else ""
+        )
+        if self.state.revision_feedback:
+            print("Re-running research to address reviewer feedback.")
+        else:
+            print("Re-running research (no notes provided).")
+
+    @listen(or_(select_research_topic, queue_revision_and_retry))
     def conduct_web_research(self):
         """Use ResearchCrew with EXASearchTool to research the topic"""
+        topic_input = self.state.topic
+        if self.state.revision_feedback:
+            topic_input = (
+                f"{self.state.topic}\n\n"
+                "Revise the research according to this reviewer feedback:\n"
+                f"{self.state.revision_feedback}"
+            )
         print(f"Conducting web research on: {self.state.topic}")
-        result = ResearchCrew().crew().kickoff(inputs={"topic": self.state.topic})
+        result = ResearchCrew().crew().kickoff(inputs={"topic": topic_input})
 
         print("Research completed")
         self.state.report = result.raw
+        self.state.revision_feedback = ""
         self.remember(result.raw)
         return result.token_usage
 
@@ -37,7 +58,8 @@ class ResearchFlow(Flow[ResearchState]):
     @human_feedback(
         message=(
             "Review the draft research report shown above. "
-            "Your free-form input will be mapped to: approve (save as-is) or revise (append your notes to the report)."
+            "Your free-form input will be mapped to: approve (save as-is) or "
+            "revise (re-run the research crew using your feedback, then show a new draft)."
         ),
         emit=["approve", "revise"],
         llm=_HITL_LLM,
@@ -59,16 +81,6 @@ class ResearchFlow(Flow[ResearchState]):
     @listen("approve")
     def save_research_report(self):
         """Save the research report to a file (approved as-is)."""
-        self._write_report_file()
-
-    @listen("revise")
-    def save_research_report_with_notes(self):
-        """Append human revision notes, then save."""
-        hf = self.last_human_feedback
-        if hf and hf.feedback.strip():
-            self.state.report += (
-                "\n\n---\nHuman revision notes:\n" + hf.feedback.strip()
-            )
         self._write_report_file()
 
 
