@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-from random import randint, choice
-
 from pydantic import BaseModel
 
-from crewai.flow import Flow, listen, start
+from crewai.flow import Flow, human_feedback, listen, start
 
+from canary_flow.create_vertex_config import create_llm
 from canary_flow.crews.research_crew.research_crew import ResearchCrew
+
+_HITL_LLM = create_llm()
 
 
 class ResearchState(BaseModel):
@@ -18,13 +19,6 @@ class ResearchFlow(Flow[ResearchState]):
     def select_research_topic(self):
         """Select a random research topic or use a predefined one"""
         print("Selecting research topic")
-        topics = [
-            "Latest developments in artificial intelligence",
-            "Current trends in renewable energy",
-            "Recent advances in quantum computing",
-            "Impact of remote work on productivity",
-            "Emerging cybersecurity threats in 2024",
-        ]
         self.state.topic = "lorenze jay hernandez"
         print(f"Selected topic: {self.state.topic}")
 
@@ -40,8 +34,20 @@ class ResearchFlow(Flow[ResearchState]):
         return result.token_usage
 
     @listen(conduct_web_research)
-    def save_research_report(self):
-        """Save the research report to a file"""
+    @human_feedback(
+        message=(
+            "Review the draft research report shown above. "
+            "Your free-form input will be mapped to: approve (save as-is) or revise (append your notes to the report)."
+        ),
+        emit=["approve", "revise"],
+        llm=_HITL_LLM,
+        default_outcome="approve",
+    )
+    def review_report(self):
+        """Pause for human review before saving."""
+        return self.state.report
+
+    def _write_report_file(self) -> None:
         print("Saving research report")
         filename = f"research_report_{self.state.topic.replace(' ', '_')[:30]}.txt"
         with open(filename, "w") as f:
@@ -49,6 +55,21 @@ class ResearchFlow(Flow[ResearchState]):
             f.write("=" * 60 + "\n\n")
             f.write(self.state.report)
         print(f"Report saved to: {filename}")
+
+    @listen("approve")
+    def save_research_report(self):
+        """Save the research report to a file (approved as-is)."""
+        self._write_report_file()
+
+    @listen("revise")
+    def save_research_report_with_notes(self):
+        """Append human revision notes, then save."""
+        hf = self.last_human_feedback
+        if hf and hf.feedback.strip():
+            self.state.report += (
+                "\n\n---\nHuman revision notes:\n" + hf.feedback.strip()
+            )
+        self._write_report_file()
 
 
 def kickoff():
