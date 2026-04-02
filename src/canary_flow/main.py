@@ -3,10 +3,10 @@ from pydantic import BaseModel
 
 from crewai.flow import Flow, human_feedback, listen, or_, start
 
-from canary_flow.create_vertex_config import create_llm
+# from canary_flow.create_vertex_config import create_llm
 from canary_flow.crews.research_crew.research_crew import ResearchCrew
 
-_HITL_LLM = create_llm()
+# _HITL_LLM = create_llm()
 
 
 class ResearchState(BaseModel):
@@ -62,7 +62,7 @@ class ResearchFlow(Flow[ResearchState]):
             "revise (re-run the research crew using your feedback, then show a new draft)."
         ),
         emit=["approve", "revise"],
-        llm=_HITL_LLM,
+        # llm=_HITL_LLM,
         default_outcome="approve",
     )
     def review_report(self):
