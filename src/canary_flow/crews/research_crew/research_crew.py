@@ -1,8 +1,10 @@
-from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
-from crewai.agents.agent_builder.base_agent import BaseAgent
-from crewai_tools import EXASearchTool
+from pyexpat import model
 from typing import List
+
+from crewai import Agent, Crew, Process, Task
+from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import EXASearchTool
 
 
 @CrewBase
@@ -20,6 +22,7 @@ class ResearchCrew:
         return Agent(
             config=self.agents_config["research_analyst"],  # type: ignore[index]
             tools=[EXASearchTool()],
+            model="gpt-5.4-mini",
         )
 
     @agent
@@ -48,5 +51,5 @@ class ResearchCrew:
             tasks=self.tasks,
             process=Process.sequential,
             verbose=True,
-            memory=True
+            # memory=True
         )
